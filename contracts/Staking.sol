@@ -65,11 +65,11 @@ contract OlympusStaking is OlympusAccessControlled {
         uint256 _firstEpochTime,
         address _authority
     ) OlympusAccessControlled(IOlympusAuthority(_authority)) {
-        require(_ohm != address(0), "Zero address: OHM");
+        require(_ohm != address(0), "Zero address: TOKN");
         OHM = IERC20(_ohm);
-        require(_sOHM != address(0), "Zero address: sOHM");
+        require(_sOHM != address(0), "Zero address: sTOKN");
         sOHM = IsOHM(_sOHM);
-        require(_gOHM != address(0), "Zero address: gOHM");
+        require(_gOHM != address(0), "Zero address: gTOKN");
         gOHM = IgOHM(_gOHM);
 
         epoch = Epoch({length: _epochLength, number: _firstEpochNumber, end: _firstEpochTime, distribute: 0});
@@ -182,11 +182,11 @@ contract OlympusStaking is OlympusAccessControlled {
             sOHM.safeTransferFrom(msg.sender, address(this), _amount);
             amount_ = amount_.add(bounty);
         } else {
-            gOHM.burn(msg.sender, _amount); // amount was given in gOHM terms
-            amount_ = gOHM.balanceFrom(amount_).add(bounty); // convert amount to OHM terms & add bounty
+            gOHM.burn(msg.sender, _amount); // amount was given in gTOKN terms
+            amount_ = gOHM.balanceFrom(amount_).add(bounty); // convert amount to TOKN terms & add bounty
         }
 
-        require(amount_ <= OHM.balanceOf(address(this)), "Insufficient OHM balance in contract");
+        require(amount_ <= OHM.balanceOf(address(this)), "Insufficient TOKN balance in contract");
         OHM.safeTransfer(_to, amount_);
     }
 

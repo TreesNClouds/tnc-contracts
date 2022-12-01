@@ -46,10 +46,10 @@ contract gOHM is IgOHM, ERC20 {
 
     /* ========== CONSTRUCTOR ========== */
 
-    constructor(address _migrator, address _sOHM) ERC20("Governance OHM", "gOHM", 18) {
+    constructor(address _migrator, address _sOHM) ERC20("Governor TOKN", "gTOKN", 18) {
         require(_migrator != address(0), "Zero address: Migrator");
         approved = _migrator;
-        require(_sOHM != address(0), "Zero address: sOHM");
+        require(_sOHM != address(0), "Zero address: sTOKN");
         sOHM = IsOHM(_sOHM);
     }
 
@@ -144,7 +144,7 @@ contract gOHM is IgOHM, ERC20 {
      * @return The number of votes the account had as of the given block
      */
     function getPriorVotes(address account, uint256 blockNumber) external view returns (uint256) {
-        require(blockNumber < block.number, "gOHM::getPriorVotes: not yet determined");
+        require(blockNumber < block.number, "gTOKN::getPriorVotes: not yet determined");
 
         uint256 nCheckpoints = numCheckpoints[account];
         if (nCheckpoints == 0) {

@@ -31,7 +31,7 @@ const privateKey = process.env.PRIVATE_KEY ?? "NO_PRIVATE_KEY";
 const alchemyApiKey = process.env.ALCHEMY_API_KEY ?? "NO_ALCHEMY_API_KEY";
 
 function getChainConfig(network: keyof typeof chainIds): NetworkUserConfig {
-    const url = `https://eth-${network}.alchemyapi.io/v2/${alchemyApiKey}`;
+    const url = `https://eth-${network}.g.alchemy.com/v2/${alchemyApiKey}`;
     return {
         accounts: [`${privateKey}`],
         chainId: chainIds[network],
@@ -148,6 +148,7 @@ const config: HardhatUserConfig = {
         daoMultisig: {
             // mainnet
             1: "0x245cc372C84B3645Bf0Ffe6538620B04a217988B",
+        
         },
     },
     typechain: {

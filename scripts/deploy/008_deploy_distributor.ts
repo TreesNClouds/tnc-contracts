@@ -1,6 +1,7 @@
 import { HardhatRuntimeEnvironment } from "hardhat/types";
 import { DeployFunction } from "hardhat-deploy/types";
 import { CONTRACTS } from "../constants";
+import { INITIAL_REWARD_RATE } from "../constants";
 
 const func: DeployFunction = async (hre: HardhatRuntimeEnvironment) => {
     const { deployments, getNamedAccounts } = hre;
@@ -20,6 +21,7 @@ const func: DeployFunction = async (hre: HardhatRuntimeEnvironment) => {
             ohmDeployment.address,
             stakingDeployment.address,
             authorityDeployment.address,
+            0, 
         ],
         log: true,
     });

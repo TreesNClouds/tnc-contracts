@@ -14,8 +14,8 @@ contract OlympusERC20Token is ERC20Permit, IOHM, OlympusAccessControlled {
     using SafeMath for uint256;
 
     constructor(address _authority)
-        ERC20("Olympus", "OHM", 9)
-        ERC20Permit("Olympus")
+        ERC20("TREESNCLOUDS", "TOKN", 9)
+        ERC20Permit("TREESNCLOUDS")
         OlympusAccessControlled(IOlympusAuthority(_authority))
     {}
 
